@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+</head>
+<body>
+    <input type="text" id='new-item'/>
+    <button id="add-btn">Add</button>
+    <ul id="todo-list">
+        
+    </ul>
+
+    <script type="text/javascript">
+        var todoList = [
+            'Diễn thời trang',
+            'Đi bộ',
+            'Đi ngủ'
+        ];
+
+        var addBtn = document.getElementById('add-btn');
+        addBtn.addEventListener('click', addItem);
+        addBtn.addEventListener('click', function(){
+            console.log('Add button with clicked');
+        });
+        // add Btn triggers a click event
+        // a click event is triggered
+        // event listener
+
+        function addItem(){
+            var input = document.getElementById('new-item');
+            var newItem = input.value;
+            // thêm vào
+            todoList.push(newItem);
+            // re-render
+            render();
+            //clear input
+            input.value = '';
+        }
+        
+        function render(){
+            var htmlList = document.getElementById('todo-list');
+            var content = todoList.map(function(item){
+                return '<li>' + item + '</li>';
+
+            });
+            htmlList.innerHTML = content.join('');
+        }
+        render();
+        
+    </script>
+</body>
+</html>
